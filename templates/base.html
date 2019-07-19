@@ -6,16 +6,34 @@
         h1{
             text-align: center;
         }
+        h4{
+            text-align: right;
+        }
         .error{
             color: red;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/blog">Main Blog Page</a> | 
-        <a href="/newpost">Add a Blog Entry</a>
-    </nav>
+    <div>
+        <a href="/">Home</a> |
+        <a href="/blog">All Posts</a> |
+        <a href="/newpost">New Post</a>
+    </div>
+       
+    <h4>
+        <a href="/login">Login</a> |
+        <a href="/logout">Logout</a>
+    </h4>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+        {% for category,message in messages %}
+            <li class="{{category}}">{{message}}</li>
+        {% endfor %}
+        </ul>
+        
+    {% endwith %} 
 
     {% block content %}
     {% endblock %}

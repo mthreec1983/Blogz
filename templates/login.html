@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Please Login</h1>
+    <br>
+    <form method='post'>
+        <label>Username:
+            <br>
+            <input type='text' name='Username' value="{{username}}">
+        </label>
+        <p></p>
+        <label>Password:
+            <br>
+            <input type="text" name='Password' value="{{password}}">
+        </label>
+        <p></p>
+        <input type="submit" value='Enter'>
+    </form>
+    <p>Don't have an account? <a href="/signup">Come on Click me...</a></p>
+{% endblock %}  
