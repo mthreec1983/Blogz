@@ -10,7 +10,7 @@
     
     {% for post in posts %}
     
-    <a href="/blog?id={{post.id}}"><h2>{{post.title}}</h2></a>
+    <a href= "/singleuser?user={{ user.id }}" > {{user.username}} </a></a>
     <p>{{post.body}}</p>
     <hr>            
     
