@@ -3,13 +3,11 @@
 {% block content %}
 <h3>Add a Post</h3>
 <form method='post' action="/newpost">
-    <div>
-        <p></p>
+    <div class="form-group">
         <label for="post">Title</label>
-        <input  type="text" name='title' value="{{post_title}}" />
-    </p>
+        <input class="form-control" type="text" name='title' value="{{post_title}}" />
         <label for="body">Body</label>
-        <textarea name='body'>{{body}}</textarea>
+        <textarea class="form-control" name='body'>{{body}}</textarea>
     </div>
     <input type="submit" value='Add Post' class="btn btn-default" />
 </form>

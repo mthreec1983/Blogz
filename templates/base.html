@@ -8,15 +8,14 @@
 <body>
        
     <nav class="navbar navbar-inverse ">
-        <a class="navbar-brand " href='/blog'>Blogz</a>
-
+        <a class="navbar-brand " href='/blog'>Blog</a>
+        <a class="navbar-brand " href='/'>Home</a>
         
 
         {% if 'username' in session %}
-        <ul>
-                <li>
-                  <br>
-                    <p> Logged in as: {{session['username']}}</p>
+        <ul class="nav navbar-nav navbar-right">
+                <li><br>
+                    <p> Logged in as: {{session['username']}} </p>
                 </li>
 
             <li>
@@ -39,7 +38,7 @@
                     <button class="btn btn-default navbar-btn">Logout</button>
                 </form>
             </li>
-            
+    
         </ul>
         {% endif %}
 
@@ -50,7 +49,7 @@
                 <button class="btn btn-default navbar-btn">Login Page</button>
             </form>
         </li>
-        
+
         </ul>
         {% endif %}
         
@@ -65,7 +64,7 @@
    
 
         <div class="alert alert-{{category}} alert-dismissible" style="width: 500px; margin: auto;">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
             {{message|safe}}</div>
         {% endfor %}
         {% endwith %}
