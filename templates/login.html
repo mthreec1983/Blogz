@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Please Login</h1>
-    <br>
-    <form method='post'>
-        <label>Username:
-            <br>
-            <input type='text' name='Username' value="{{username}}">
-        </label>
-        <p></p>
-        <label>Password:
-            <br>
-            <input type="text" name='Password' value="{{password}}">
-        </label>
-        <p></p>
-        <input type="submit" value='Enter'>
-    </form>
-    <p>Don't have an account? <a href="/signup">Come on Click me...</a></p>
-{% endblock %}  
+<h1>Log in</h1>
+<p>Hey, maybe you should --> <a href="/register">CREATE New ACCOUNT?</a></p>
+<form action="/login" method="post">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input name="username" class="form-control" type="username" value="{{ username }}">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" class="form-control" type="password">
+    </div>
+    <input type="submit" value="Submit Login" class="btn btn-default">
+</form>
+{% endblock %}

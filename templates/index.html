@@ -1,21 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    <h1>Blogz</h1>
 
-    {% if user|length == 0 %}
-    <h3>No user created</h3>
-    {% else %}
-    
-    {% for post in posts %}
-    
-    <a href= "/singleuser?user={{ user.id }}" > {{user.username}} </a></a>
-    <p>{{post.body}}</p>
-    <hr>            
-    
-    {% endfor %}  
+<h3>All Blog Authors</h3>
 
-    {% endif %}
+{% if users|length == 0 %}
+<p>No Users yet</p>
+{% else %}
+
+<table border="1" width="600" style="border-spacing: 2px;">
+    {% for user in users %}
+    <tr>
+        <td>
+            <br>
+            <b><a href='./blog?userID={{user.id}}' class="">{{user.username}}</a></b> <br>Author Since: {{user.created_dt}}
+            <br><br>
+            
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
 
 {% endblock %}

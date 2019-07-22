@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    <h1>Blogz</h1>
+<h3>All Blog Posts</h3>
 
-    {% if posts|length == 0 %}
-    <h3>No blog posts yet.</h3>
-    {% else %}
-    
-    {% for post in posts %}
-    
-    <a href="/index?id={{username.id}}"><h2>{{Blogz.username}}</h2></a>
-    <p>{{post.body}}</p>
-    <hr>            
-    
-    {% endfor %}  
+{% if posts|length == 0 %}
+<p>No posts yet</p>
+{% else %}
 
-    {% endif %}
+<table border="1" width="600" style="border-spacing: 2px;">
+        {% for post in posts %}
+        
+        <tr>
+            <td>
+                <b><a href='./blog?id={{post.id}}' class="">{{post.title}}</a></b><br>{{post.body}}<br><br>
+                Written by: <a href='./blog?userID={{post.owner.id}}' class="">{{post.owner.username}}</a> Posted: {{post.created_dt}}
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endif %}
 
 {% endblock %}

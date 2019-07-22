@@ -1,42 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+
 <head>
     <title>{{title}}</title>
-    <style>
-        h1{
-            text-align: center;
-        }
-        h4{
-            text-align: right;
-        }
-        .error{
-            color: red;
-        }
-    </style>
 </head>
+
 <body>
-    <div>
-        <a href="/">Home</a> |
-        <a href="/blog">All Posts</a> |
-        <a href="/newpost">New Post</a>
-    </div>
        
-    <h4>
-        <a href="/login">Login</a> |
-        <a href="/logout">Logout</a>
-    </h4>
+    <nav class="navbar navbar-inverse ">
+        <a class="navbar-brand " href='/blog'>Blogz</a>
 
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        <ul>
-        {% for category,message in messages %}
-            <li class="{{category}}">{{message}}</li>
-        {% endfor %}
-        </ul>
         
-    {% endwith %} 
 
-    {% block content %}
-    {% endblock %}
+        {% if 'username' in session %}
+        <ul>
+                <li>
+                  <br>
+                    <p> Logged in as: {{session['username']}}</p>
+                </li>
+
+            <li>
+                <form method="get" action="/newpost">
+                    <button class="btn btn-default navbar-btn">Add a New Post</button>
+                </form>
+            </li>
+            <li>
+                <form method="get" action="/blog">
+                    <button class="btn btn-default navbar-btn">Check Out The Blog</button>
+                </form>
+            </li>
+            <li>
+                <form method="get" action="/">
+                    <button class="btn btn-default navbar-btn">Home</button>
+                </form>
+            </li>
+            <li>
+                <form method="post" action="/logout">
+                    <button class="btn btn-default navbar-btn">Logout</button>
+                </form>
+            </li>
+            
+        </ul>
+        {% endif %}
+
+        {% if 'username' not in session %}
+        <ul class="nav navbar-nav navbar-right">
+        <li>
+            <form method="get" action="/login">
+                <button class="btn btn-default navbar-btn">Login Page</button>
+            </form>
+        </li>
+        
+        </ul>
+        {% endif %}
+        
+        
+    </nav>
+    
+
+    <div class="container" >
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% for category,message in messages %}
+   
+
+        <div class="alert alert-{{category}} alert-dismissible" style="width: 500px; margin: auto;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{message|safe}}</div>
+        {% endfor %}
+        {% endwith %}
+
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
 
 </body>
+
 </html>
